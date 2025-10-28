@@ -1,1 +1,1 @@
-export const API_BASE_URL:string = "https://localhost:7187";
+export const API_BASE_URL:string = "https://proyecto-web-sistema-de-encriptacion-de.onrender.com";
