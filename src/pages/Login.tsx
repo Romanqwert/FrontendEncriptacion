@@ -2,7 +2,7 @@ import Logo from "../components/Logo";
 import "./styles.css";
 import { useEffect, useState } from "react";
 import Button from "../components/Button";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast";
 import { login } from "../api/auth";
 import { AxiosError } from "axios";
@@ -15,6 +15,8 @@ interface Response {
 
 function LoginPage() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.body.classList.add("body");
@@ -43,7 +45,7 @@ function LoginPage() {
       }
 
       sessionStorage.setItem("user_token", token);
-      window.location.href = "http://localhost:3000/";
+      navigate("/");
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data);
