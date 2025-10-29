@@ -4,7 +4,7 @@ import { api, Response } from "./api";
 const token = sessionStorage.getItem("user_token");
 
 export const listFiles = async (id: number): Promise<Response> => {
-  return await api.get(`/api/Archivos/list/${id}`, {
+  return await api.get(`/api/Archivos/list`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -22,7 +22,7 @@ export const downloadFile = async (id: number): Promise<Response> => {
 export const uploadFile = async (file: FormData): Promise<Response> => {
   return await api.post("/api/Archivos/upload", file, {
     headers: {
-      Authorization: `Bearer: ${token}`,
+      Authorization: `Bearer ${token}`,
       "Content-Type": "multipart/form-data",
     },
   });
